@@ -29,6 +29,7 @@
             width: 400px;
             z-index: 10;
             transition: all 0.5s ease-in-out;
+            position: relative;
         }
 
         h2 {
@@ -50,6 +51,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            position: relative;
+            height: 140px; /* Base height for buttons */
         }
 
         .option-btn {
@@ -61,15 +64,23 @@
             border-radius: 50px;
             cursor: pointer;
             font-family: 'Georgia', serif;
-            transition: all 0.3s ease;
+            transition: background 0.3s, color 0.3s, transform 0.2s ease;
             font-weight: bold;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Moving button specific styling */
+        #maybeBtn {
+            position: relative;
+            z-index: 20;
         }
 
         .option-btn:hover {
             background: #ff4d6d;
             color: white;
             box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-            transform: translateY(-2px);
         }
 
         /* Page 2 Text Layout */
@@ -132,9 +143,8 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Hide Page 2 by default */
         .hidden {
-            display: none;
+            display: none !important;
         }
     </style>
 </head>
@@ -145,14 +155,13 @@
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
         <div class="btn-container">
-            <button class="option-btn" onclick="nextPage()">🔘 No</button>
-            <button class="option-btn" onclick="nextPage()">🔘 Maybe</button>
+            <button class="option-btn" onclick="sayNo()">🔘 No</button>
+            <button class="option-btn" id="maybeBtn" onclick="handleMaybe()">🔘 Maybe</button>
         </div>
     </div>
 
     <!-- PAGE 2: THE SURPRISE MESSAGE -->
     <div id="page2" class="container hidden">
-        <!-- Yahan aap apna emotional message mazeed lamba ya change kar sakte hain -->
         <div class="birthday-message">
             Aap meri zindagi ka sab se haseen hissa hain. Aapke sath guzra har lamha mere liye bohot qeemti hai, aur main har din khuda ka shukur ada karta hon ke aap meri zindagi mein aayein. Allah aapko hamesha hansta muskurata rakhe.
         </div>
@@ -173,12 +182,9 @@
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 3 + 's';
             
-            // Randomly pink or red hearts
             const colors = ['#ff4d6d', '#ff758f', '#ff8fa3', '#c9184a'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             heart.style.backgroundColor = randomColor;
-            
-            // Apply color to pseudo elements too using css variable
             heart.style.setProperty('--bg-color', randomColor);
             
             document.body.appendChild(heart);
@@ -186,7 +192,35 @@
         }
         setInterval(createHeart, 400);
 
-        // Function to switch pages smoothly
+        // No button function
+        function sayNo() {
+            alert("Souchhhh leinnnnnn 🥺❤️");
+        }
+
+        // Maybe button logic
+        let maybeClickCount = 0;
+        function handleMaybe() {
+            maybeClickCount++;
+            const maybeBtn = document.getElementById('maybeBtn');
+            
+            if (maybeClickCount < 3) {
+                // Change position randomly within screen limits
+                maybeBtn.style.position = 'fixed';
+                
+                // Keep it within standard mobile safe margins
+                const randomX = Math.random() * (window.innerWidth - 150);
+                const randomY = Math.random() * (window.innerHeight - 80);
+                
+                maybeBtn.style.left = randomX + 'px';
+                maybeBtn.style.top = randomY + 'px';
+                maybeBtn.style.width = 'auto';
+            } else {
+                // 3rd click goes to page 2
+                nextPage();
+            }
+        }
+
+        // Switch pages smoothly
         function nextPage() {
             const p1 = document.getElementById('page1');
             const p2 = document.getElementById('page2');
@@ -203,7 +237,6 @@
         }
     </script>
 
-    <!-- Style twist for dynamic heart colors -->
     <style>
         .heart, .heart:before, .heart:after {
             background-color: var(--bg-color) !important;
