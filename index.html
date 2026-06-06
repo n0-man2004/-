@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe5ec, #ffb3c6);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            color: #ff4d6d;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            max-width: 85%;
+            width: 400px;
+            z-index: 10;
+            transition: all 0.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #590d22;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ff4d6d;
+            margin-bottom: 30px;
+        }
+
+        /* Page 1 Buttons */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: white;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .option-btn:hover {
+            background: #ff4d6d;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Page 2 Text Layout */
+        .birthday-message {
+            font-size: 1.15rem;
+            color: #590d22;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .truth-text {
+            font-style: italic;
+            color: #ff4d6d;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            border-top: 1px dashed #ffb3c6;
+            padding-top: 15px;
+        }
+
+        .final-wish {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            background-color: #ff4d6d;
+            display: inline-block;
+            height: 20px;
+            transform: rotate(-45deg);
+            width: 20px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            background-color: #ff4d6d;
+            border-radius: 50%;
+            height: 20px;
+            position: absolute;
+            width: 20px;
+        }
+
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg) scale(0.5); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(-45deg) scale(1.2); opacity: 0; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Hide Page 2 by default */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: THE QUESTION -->
+    <div id="page1" class="container">
+        <h2>Before you continue…</h2>
+        <p>Do you know how special you are to me?</p>
+        <div class="btn-container">
+            <button class="option-btn" onclick="nextPage()">🔘 No</button>
+            <button class="option-btn" onclick="nextPage()">🔘 Maybe</button>
+        </div>
+    </div>
+
+    <!-- PAGE 2: THE SURPRISE MESSAGE -->
+    <div id="page2" class="container hidden">
+        <!-- Yahan aap apna emotional message mazeed lamba ya change kar sakte hain -->
+        <div class="birthday-message">
+            Aap meri zindagi ka sab se haseen hissa hain. Aapke sath guzra har lamha mere liye bohot qeemti hai, aur main har din khuda ka shukur ada karta hon ke aap meri zindagi mein aayein. Allah aapko hamesha hansta muskurata rakhe.
+        </div>
+        
+        <div class="truth-text">
+            “The truth is, no button could give the right answer.<br><br>
+            Because you’ll probably never know how much you mean to me.”
+        </div>
+        
+        <div class="final-wish">Happy Birthday ❤️</div>
+    </div>
+
+    <!-- Floating Hearts Script -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            
+            // Randomly pink or red hearts
+            const colors = ['#ff4d6d', '#ff758f', '#ff8fa3', '#c9184a'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.backgroundColor = randomColor;
+            
+            // Apply color to pseudo elements too using css variable
+            heart.style.setProperty('--bg-color', randomColor);
+            
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 400);
+
+        // Function to switch pages smoothly
+        function nextPage() {
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+            
+            p1.style.opacity = '0';
+            setTimeout(() => {
+                p1.classList.add('hidden');
+                p2.classList.remove('hidden');
+                p2.style.opacity = '0';
+                setTimeout(() => {
+                    p2.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+    </script>
+
+    <!-- Style twist for dynamic heart colors -->
+    <style>
+        .heart, .heart:before, .heart:after {
+            background-color: var(--bg-color) !important;
+        }
+    </style>
+
+</body>
+</html>
