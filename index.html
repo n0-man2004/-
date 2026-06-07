@@ -50,7 +50,7 @@
             margin-bottom: 30px;
         }
 
-        /* Buttons Styling (Same as original layout) */
+        /* Buttons Styling */
         .btn-container {
             display: flex;
             flex-direction: column;
@@ -78,7 +78,7 @@
         #maybeBtn {
             position: relative;
             z-index: 20;
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .option-btn:hover {
@@ -283,13 +283,13 @@
             document.getElementById('customPopup').classList.remove('active');
         }
 
-        // Fun Fact / Taunt Messages for Suspense
+        // Custom Requested Dialogues
         const funPhrases = [
-            "🔘 Pakro mujhe! 🏃‍♂️",
-            "🔘 Try again, try again! 😜",
-            "🔘 Lagta hai naseeb mein 'Maybe' bhi nahi ha 😂",
-            "🔘 Fun Fact: Main dunya ka sab se ziddi button hon 😎",
-            "🔘 Acha aakhri dafa click karo, sachi pukka! 🥺"
+            "🔘 Pakr ky dikhaein 😅",
+            "🔘 Aryyy pakrein naw😭",
+            "🔘 O geee thak ty nai gay 🌚",
+            "🔘 Ohoo chlein akhri bari😁",
+            "🔘 Basss akhriii dfa😭❤️"
         ];
 
         let maybeClickCount = 0;
@@ -300,23 +300,23 @@
             if (maybeClickCount <= 5) {
                 maybeBtn.style.position = 'fixed';
                 
-                // Safe area for mobile view
-                const buttonWidth = 160;
-                const buttonHeight = 50;
+                // Tight box constraints around the main container (Pas Pas Rakhne Ke Liye)
+                const containerLeft = window.innerWidth / 2 - 150;
+                const containerTop = window.innerHeight / 2 - 100;
                 
-                const safeMinX = window.innerWidth * 0.1;
-                const safeMaxX = window.innerWidth * 0.7 - buttonWidth;
-                const safeMinY = window.innerHeight * 0.2;
-                const safeMaxY = window.innerHeight * 0.8 - buttonHeight;
+                const safeMinX = containerLeft - 20;
+                const safeMaxX = containerLeft + 140;
+                const safeMinY = containerTop + 90;
+                const safeMaxY = containerTop + 210;
                 
                 const randomX = Math.random() * (safeMaxX - safeMinX) + safeMinX;
                 const randomY = Math.random() * (safeMaxY - safeMinY) + safeMinY;
                 
                 maybeBtn.style.left = randomX + 'px';
                 maybeBtn.style.top = randomY + 'px';
-                maybeBtn.style.width = '180px';
+                maybeBtn.style.width = '240px'; 
                 
-                // Changing text inside the button dynamically for suspense and laughs
+                // Update text dynamically from the custom phrases list
                 maybeBtn.innerText = funPhrases[maybeClickCount - 1];
             } else {
                 nextPage();
