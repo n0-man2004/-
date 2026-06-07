@@ -20,7 +20,7 @@
             text-align: center;
         }
 
-        /* Glassmorphism Container for Unique Look */
+        /* Glassmorphism Container */
         .container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -41,7 +41,6 @@
             color: #ffffff;
             margin-bottom: 10px;
             line-height: 1.4;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
         }
 
         p {
@@ -51,7 +50,7 @@
             margin-bottom: 30px;
         }
 
-        /* Buttons Styling */
+        /* Buttons Styling (Same as original layout) */
         .btn-container {
             display: flex;
             flex-direction: column;
@@ -69,7 +68,7 @@
             border-radius: 50px;
             cursor: pointer;
             font-family: 'Georgia', serif;
-            transition: all 0.3s ease;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
             font-weight: bold;
             display: block;
             width: 100%;
@@ -79,6 +78,7 @@
         #maybeBtn {
             position: relative;
             z-index: 20;
+            transition: all 0.2s ease;
         }
 
         .option-btn:hover {
@@ -114,7 +114,48 @@
             text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
         }
 
-        /* Floating Elements (Hearts & Text) */
+        /* Custom White Popup */
+        .custom-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            z-index: 100;
+            width: 280px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .custom-popup.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-popup h3 {
+            margin: 0 0 15px 0;
+            color: #ff4d6d;
+            font-size: 1.4rem;
+        }
+
+        .custom-popup button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Floating Elements */
         .floating-element {
             position: absolute;
             bottom: -50px;
@@ -124,7 +165,6 @@
             z-index: 1;
         }
 
-        /* Heart Shape */
         .heart {
             display: inline-block;
             height: 20px;
@@ -141,7 +181,6 @@
         .heart:before { top: -10px; left: 0; }
         .heart:after { left: 10px; top: 0; }
 
-        /* Text Element Styling */
         .floating-text {
             font-weight: bold;
             font-size: 1.1rem;
@@ -174,15 +213,21 @@
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
         <div class="btn-container">
-            <button class="option-btn" onclick="sayNo()">🔘 No</button>
+            <button class="option-btn" onclick="openPopup()">🔘 No</button>
             <button class="option-btn" id="maybeBtn" onclick="handleMaybe()">🔘 Maybe</button>
         </div>
+    </div>
+
+    <!-- CUSTOM WHITE POPUP -->
+    <div id="customPopup" class="custom-popup">
+        <h3>Souchhhh leinnnnnn 🥺❤️</h3>
+        <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
+        <button onclick="closePopup()">Okay Sorry</button>
     </div>
 
     <!-- PAGE 2: THE SURPRISE MESSAGE -->
     <div id="page2" class="container hidden">
         <div class="birthday-message">
-            <!-- IDHAR APNA FAVORITE HEART TOUCHING MESSAGE PASTE KAREIN -->
             Main aksar sochta hon ke agar aap meri zindagi mein na hote, to main kaisa hota? Shayad bilkul aam, bhatka hua sa. Zindagi mein bohot se log aate hain, par aap wo haseen moajza hain jo khuda ne sirf mere liye bheja. Mujhe aapki haseen soorat se zyada aapki seerat se, aapke bholepan se, aur jis tarah aap bina kuch kahe mera khayal rakhti hain, us se mohabbat hai. Happy Birthday to my safe place, my home. ❤️
         </div>
         
@@ -195,13 +240,12 @@
     </div>
 
     <script>
-        // High Quantity Floating System (Mix of Red/White Hearts & hhhhh😭❤️)
+        // High Quantity Floating System
         function createFloatingElement() {
             const container = document.createElement('div');
             container.classList.add('floating-element');
             
-            // Randomly choose between Heart or Text
-            const isText = Math.random() > 0.4; // 60% chance text, 40% chance heart (Higher quantity)
+            const isText = Math.random() > 0.4;
             
             if (isText) {
                 container.classList.add('floating-text');
@@ -209,17 +253,13 @@
             } else {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
-                
-                // Mix of White and Red colors
-                const colors = ['#ff4d6d', '#ffffff', '#ff758f', '#ffffff', '#c9184a'];
+                const colors = ['#ff4d6d', '#ffffff', '#ff758f', '#ffffff'];
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
                 
-                // Injecting CSS variables to handle the pseudo-elements color dynamically
                 heart.style.backgroundColor = randomColor;
                 container.style.setProperty('--heart-color', randomColor);
                 container.appendChild(heart);
                 
-                // CSS inline helper for pseudo elements color override
                 const styleHelper = document.createElement('style');
                 styleHelper.innerHTML = `.floating-element .heart { background-color: var(--heart-color); } .floating-element .heart:before, .floating-element .heart:after { background-color: var(--heart-color); }`;
                 if (!document.getElementById('heart-style-helper')) {
@@ -229,37 +269,55 @@
             }
             
             container.style.left = Math.random() * 100 + 'vw';
-            container.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4 to 7 seconds speed
+            container.style.animationDuration = Math.random() * 3 + 4 + 's';
             
-            // Slight random horizontal tilt for extra unique animation look
-            if (!isText) {
-                container.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
-            }
-
             document.body.appendChild(container);
             setTimeout(() => { container.remove(); }, 7000);
         }
-        
-        // High Quantity interval (Spawns every 250ms)
         setInterval(createFloatingElement, 250);
 
-        function sayNo() {
-            alert("Souchhhh leinnnnnn 🥺❤️");
+        function openPopup() {
+            document.getElementById('customPopup').classList.add('active');
         }
+        function closePopup() {
+            document.getElementById('customPopup').classList.remove('active');
+        }
+
+        // Fun Fact / Taunt Messages for Suspense
+        const funPhrases = [
+            "🔘 Pakro mujhe! 🏃‍♂️",
+            "🔘 Try again, try again! 😜",
+            "🔘 Lagta hai naseeb mein 'Maybe' bhi nahi ha 😂",
+            "🔘 Fun Fact: Main dunya ka sab se ziddi button hon 😎",
+            "🔘 Acha aakhri dafa click karo, sachi pukka! 🥺"
+        ];
 
         let maybeClickCount = 0;
         function handleMaybe() {
             maybeClickCount++;
             const maybeBtn = document.getElementById('maybeBtn');
             
-            if (maybeClickCount < 3) {
+            if (maybeClickCount <= 5) {
                 maybeBtn.style.position = 'fixed';
-                const randomX = Math.random() * (window.innerWidth - 150);
-                const randomY = Math.random() * (window.innerHeight - 80);
+                
+                // Safe area for mobile view
+                const buttonWidth = 160;
+                const buttonHeight = 50;
+                
+                const safeMinX = window.innerWidth * 0.1;
+                const safeMaxX = window.innerWidth * 0.7 - buttonWidth;
+                const safeMinY = window.innerHeight * 0.2;
+                const safeMaxY = window.innerHeight * 0.8 - buttonHeight;
+                
+                const randomX = Math.random() * (safeMaxX - safeMinX) + safeMinX;
+                const randomY = Math.random() * (safeMaxY - safeMinY) + safeMinY;
                 
                 maybeBtn.style.left = randomX + 'px';
                 maybeBtn.style.top = randomY + 'px';
-                maybeBtn.style.width = 'auto';
+                maybeBtn.style.width = '180px';
+                
+                // Changing text inside the button dynamically for suspense and laughs
+                maybeBtn.innerText = funPhrases[maybeClickCount - 1];
             } else {
                 nextPage();
             }
@@ -280,14 +338,5 @@
             }, 400);
         }
     </script>
-
-    <style>
-        /* This handles dynamic coloring for the pseudo elements of floating hearts */
-        .floating-element .heart, 
-        .floating-element .heart:before, 
-        .floating-element .heart:after {
-            background-color: inherit;
-        }
-    </style>
 </body>
 </html>
