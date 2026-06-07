@@ -123,11 +123,11 @@
             width: 100%;
             box-sizing: border-box;
             backdrop-filter: blur(5px);
-            -webkit-tap-highlight-color: transparent; /* Fixes iPhone gray flash on click */
+            -webkit-tap-highlight-color: transparent;
         }
 
         #maybeBtn {
-            position: relative; /* Fixed layout flow - no disappearing coordinates */
+            position: relative;
             z-index: 20;
         }
 
@@ -279,7 +279,7 @@
             font-weight: 300;
         }
 
-        /* Specific Secret Bold Letters Effect */
+        /* Glowing Cinematic Effect for Secret Letters */
         .secret-letter {
             font-weight: 900;
             color: #ffffff;
@@ -290,7 +290,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             text-shadow: 0 0 12px rgba(255, 77, 109, 0.9);
-            font-size: 1.3rem;
+            font-size: 1.35rem;
         }
 
         .feature-list {
@@ -509,9 +509,9 @@
             
             <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
             
-            <!-- SECRET MESSAGE PARAGRAPH WITH ONLY FIRST LETTERS BOLDED (I LOVE YOU) -->
+            <!-- FIXED SECRET MESSAGE PARAGRAPH COMPLYING WITH image_13.png -->
             <div class="msg-p">
-                <span class="secret-letter">I</span>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 Log kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <span class="secret-letter">V</span>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <span class="secret-letter">E</span>k ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
+                <span class="secret-letter">I</span>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky re<span class="secret-letter">L</span>ax or easy feel krta hon😭 L<span class="secret-letter">O</span>g kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <span class="secret-letter">V</span>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <span class="secret-letter">E</span>k ap he ho jis sy mein koi b bt kron koi b to muj<span class="secret-letter">Y</span>u souchna nhi parta <span class="secret-letter">O</span>r ap mujy witho<span class="secret-letter">U</span>t judge kea sun lytin hein 😭❤️
             </div>
             
             <div class="msg-p">Yeh ehsas mery leaaaa bht bht khass hai or mein kbhi b isy khona nhi chataaaaa Or kuch mily ya na mily bssss apka sath mujy hamesha hamesha ky lea chaheee mujy nhi ptaaa bss chahe to chaheeeeee 😭 Umeed hai ap meri zindagi mein is eshas ki emiyat ko smjh sakeingi.</div>
@@ -545,7 +545,7 @@
             
             <!-- URDU AND PARAGRAPHS -->
             <div class="msg-p" style="text-align: center; font-size: 1.35rem; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);">
-                میلی کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
+                میری کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
                 میں جس کی گردش میں ہوں، وہ اک چاند ہو tum(آپ)🌚🕊️💝
             </div>
             
@@ -648,7 +648,6 @@
             const maybeBtn = document.getElementById('maybeBtn');
             
             if (maybeClickCount <= 5) {
-                // Button ko usi jagah lock rakh kar scale animation dyna taake screen se baahir na jaye
                 maybeBtn.style.transform = 'scale(0.92)';
                 
                 setTimeout(() => {
