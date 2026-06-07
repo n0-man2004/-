@@ -127,8 +127,7 @@
         #maybeBtn {
             position: relative;
             z-index: 20;
-            /* Speed up transition to 0.1s for ultra-fast jumps */
-            transition: all 0.1s ease-out;
+            transition: all 0.1s ease-out; /* Super speed dynamic movement */
         }
 
         .option-btn:hover {
@@ -270,17 +269,16 @@
             padding-bottom: 35vh;
         }
 
-        /* Zoomed out text font-size for better readability */
         .msg-p {
             font-size: 1.15rem; 
             line-height: 1.9;
             color: #f3f4f6;
             margin-bottom: 35px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            font-weight: 300; /* Keeping overall text thin */
+            font-weight: 300;
         }
 
-        /* Specific Secret Bold Letters Animation Effect */
+        /* Specific Secret Bold Letters Effect */
         .secret-letter {
             font-weight: 900;
             color: #ffffff;
@@ -291,7 +289,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             text-shadow: 0 0 12px rgba(255, 77, 109, 0.9);
-            font-size: 1.3rem; /* Slightly larger only for the secret letters */
+            font-size: 1.3rem;
         }
 
         .feature-list {
@@ -653,29 +651,38 @@
                 maybeBtn.style.position = 'fixed';
                 maybeBtn.style.width = '240px';
                 
-                // Get container layout bounding details
                 const rect = container.getBoundingClientRect();
                 let targetX, targetY;
 
+                // Box ke aass-paas restrict rakhne ke liye calculation
                 if (maybeClickCount === 1) {
-                    // 1st Click: Exactly above the "Before you start" box top
+                    // 1st Click: Box ke bilkul upar
                     targetX = rect.left + (rect.width / 2) - 120;
-                    targetY = rect.top - 70;
+                    targetY = rect.top - 65;
                 } else if (maybeClickCount === 2) {
-                    // 2nd Click: Directly below the box bottom
+                    // 2nd Click: Box ke bilkul neeche
                     targetX = rect.left + (rect.width / 2) - 120;
                     targetY = rect.bottom + 20;
                 } else if (maybeClickCount === 3) {
-                    // 3rd Click: Floating slightly above the box top border
-                    targetX = rect.left + (rect.width / 2) - 120;
-                    targetY = rect.top - 20;
-                } else {
-                    // 4th & 5th Click: Rapidly shift to random safe screen quadrants
-                    targetX = Math.random() * (window.innerWidth - 260) + 10;
-                    targetY = Math.random() * (window.innerHeight - 100) + 10;
+                    // 3rd Click: Box ke upar thoda sa left adjust hoke
+                    targetX = rect.left + 20;
+                    targetY = rect.top - 65;
+                } else if (maybeClickCount === 4) {
+                    // 4th Click: Box ki right side par tightly bounded
+                    targetX = rect.right - 180;
+                    targetY = rect.top + (rect.height / 2) - 30;
+                } else if (maybeClickCount === 5) {
+                    // 5th Click: Box ki left side par closely floating
+                    targetX = rect.left - 80;
+                    targetY = rect.bottom - 90;
                 }
 
-                // Push calculated coordinates instantly
+                // Agar screen sizes choti hon to window screen overflow se bachane ka fallback safe filter
+                if (targetX < 10) targetX = 10;
+                if (targetX > window.innerWidth - 250) targetX = window.innerWidth - 250;
+                if (targetY < 10) targetY = 10;
+                if (targetY > window.innerHeight - 60) targetY = window.innerHeight - 60;
+
                 maybeBtn.style.left = targetX + 'px';
                 maybeBtn.style.top = targetY + 'px';
                 maybeBtn.innerText = funPhrases[maybeClickCount - 1];
