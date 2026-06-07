@@ -125,9 +125,12 @@
         }
 
         #maybeBtn {
-            position: relative;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
             z-index: 20;
-            transition: all 0.1s ease-out; /* Dynamic fast movement */
+            transition: all 0.15s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sharp but smooth movement inside box */
         }
 
         .option-btn:hover {
@@ -456,6 +459,7 @@
 </head>
 <body>
 
+    <!-- PAGE 1: THE INTERFACE -->
     <div id="page1" class="container">
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
@@ -465,12 +469,14 @@
         </div>
     </div>
 
+    <!-- CUSTOM WHITE POPUP -->
     <div id="customPopup" class="custom-popup">
         <h3>Souchhhh leinnnnnn 🥺❤️</h3>
         <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
         <button onclick="closePopup()">Okay Sorry</button>
     </div>
 
+    <!-- INTERMISSION: 3D CAKE CUTTING SCENE -->
     <div id="cakeScene" class="hidden">
         <h2 style="color: #ff4d6d; margin-bottom: 30px; font-size: 2rem; text-shadow: 0 0 10px rgba(255,77,109,0.3);">Make a Wish... ✨</h2>
         <div class="cake-wrapper">
@@ -483,6 +489,7 @@
         </div>
     </div>
 
+    <!-- PAGE 2: IMMERSIVE FULL-SCREEN CINEMATIC LETTER -->
     <div id="page2" class="full-screen-letter hidden">
         <div class="letter-content" id="letterContent">
             
@@ -504,6 +511,7 @@
             
             <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
             
+            <!-- SECRET MESSAGE PARAGRAPH WITH ONLY FIRST LETTERS BOLDED (I LOVE YOU) -->
             <div class="msg-p">
                 <span class="secret-letter">I</span>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 Log kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <span class="secret-letter">V</span>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <span class="secret-letter">E</span>k ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
             </div>
@@ -512,6 +520,7 @@
             
             <div class="msg-p">Mn to apko apni sariiiiiii A to Z dastan sunai v hai ky like kesy mn face keaa kesy sab hota gea or ab Allhamdullah sab kesy chal rha hai 😭 Like meinn wo insan jo kabhi in chkro mein para e naiiiii kabhi kisi sy bt tk nai ki ahaaa apko dykh ky ma sab kuch bhool gea 🌚 first look mein e like mein tha ky itny pyaryyyyy😭 nain naqsh itni pyary pyary face expression itniii pali pali dressing itni pyarii hasiii itni pyari bateinnnnn itnaaaa pyara kon ho skta 😭</div>
 
+            <!-- THE PREMIUM LIST -->
             <ul class="feature-list">
                 <li>Apki communication</li>
                 <li>Apka playful attitude</li>
@@ -536,8 +545,9 @@
             
             <div class="msg-p" style="font-weight: bold; color: #ff4d6d; font-size: 1.25rem;">Sari ki sariii apppp tablyy tareeef hein😭❤️</div>
             
+            <!-- URDU AND PARAGRAPHS -->
             <div class="msg-p" style="text-align: center; font-size: 1.35rem; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);">
-                میلی کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
+                میری کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
                 میں جس کی گردش میں ہوں، وہ اک چاند ہو tum(آپ)🌚🕊️💝
             </div>
             
@@ -577,6 +587,7 @@
                 Because you’ll probably never know how much you mean to me.”
             </div>
             
+            <!-- FINAL WISH -->
             <div class="final-wish">Happy Birthday, MINUU GEEE! ❤️</div>
         </div>
     </div>
@@ -637,41 +648,34 @@
         function handleMaybe() {
             maybeClickCount++;
             const maybeBtn = document.getElementById('maybeBtn');
-            const container = document.querySelector('.container');
             
             if (maybeClickCount <= 5) {
-                maybeBtn.style.position = 'fixed';
-                maybeBtn.style.width = '240px';
+                // Button ko tight box boundaries ke andar random jumps karwane ke liye styling adjustments
+                maybeBtn.style.width = 'auto';
+                maybeBtn.style.right = 'auto';
                 
-                const rect = container.getBoundingClientRect();
-                let targetX, targetY;
+                let targetLeft, targetBottom;
 
-                // Box ke nazdeek tightly restricted positions
+                // Absolute positions tightly confined INSIDE the glass container (.btn-container boundary)
                 if (maybeClickCount === 1) {
-                    targetX = rect.left + (rect.width / 2) - 120;
-                    targetY = rect.top - 65;
+                    targetLeft = '10px';
+                    targetBottom = '85px'; // Box ke andar upar left side par
                 } else if (maybeClickCount === 2) {
-                    targetX = rect.left + (rect.width / 2) - 120;
-                    targetY = rect.bottom + 20;
+                    targetLeft = '130px';
+                    targetBottom = '45px'; // Box ke andar beech mein right side par
                 } else if (maybeClickCount === 3) {
-                    targetX = rect.left + 20;
-                    targetY = rect.top - 65;
+                    targetLeft = '50px';
+                    targetBottom = '90px'; // Box ke andar top center par
                 } else if (maybeClickCount === 4) {
-                    targetX = rect.right - 180;
-                    targetY = rect.top + (rect.height / 2) - 30;
+                    targetLeft = '10px';
+                    targetBottom = '10px'; // Box ke andar bottom left corner par
                 } else if (maybeClickCount === 5) {
-                    targetX = rect.left - 80;
-                    targetY = rect.bottom - 90;
+                    targetLeft = '110px';
+                    targetBottom = '85px'; // Box ke andar top right side par
                 }
 
-                // Screen safety check
-                if (targetX < 10) targetX = 10;
-                if (targetX > window.innerWidth - 250) targetX = window.innerWidth - 250;
-                if (targetY < 10) targetY = 10;
-                if (targetY > window.innerHeight - 60) targetY = window.innerHeight - 60;
-
-                maybeBtn.style.left = targetX + 'px';
-                maybeBtn.style.top = targetY + 'px';
+                maybeBtn.style.left = targetLeft;
+                maybeBtn.style.bottom = targetBottom;
                 maybeBtn.innerText = funPhrases[maybeClickCount - 1];
             } else {
                 showCakeAndThenLetter();
