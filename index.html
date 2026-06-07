@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #09090d; /* Ultra Deep Cinematic Void */
+            background: #0d0d11; /* Rich Deep Velvet Black */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -21,108 +21,74 @@
             position: relative;
         }
 
-        /* Ambient Cosmic Background Glows */
+        /* Subtle loving glow in background */
         body::before {
             content: '';
             position: absolute;
-            top: 40%;
-            left: 30%;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 77, 109, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-            animation: pulseGlow 8s infinite alternate ease-in-out;
-        }
-        body::after {
-            content: '';
-            position: absolute;
-            top: 60%;
-            left: 70%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, rgba(0,0,0,0) 75%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 77, 109, 0.08) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
             pointer-events: none;
-            animation: pulseGlow 12s infinite alternate-reverse ease-in-out;
         }
 
-        /* PAGE 1: PRESET CINEMATIC INTERFACE (NEON GLOW GLASSBOX) */
+        /* PAGE 1: Standard Glassmorphism Box */
         .container {
-            position: relative;
-            background: rgba(15, 15, 25, 0.45);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            padding: 50px 40px;
-            border-radius: 32px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            max-width: 88%;
-            width: 420px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            max-width: 85%;
+            width: 400px;
             z-index: 10;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
+            position: relative;
             box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        /* Fluid Moving Border Line Around the UI */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 32px;
-            padding: 2px; /* Border width */
-            background: linear-gradient(135deg, rgba(255,77,109,0.4), rgba(255,255,255,0.05), rgba(147,51,234,0.3), rgba(255,255,255,0.1));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
         }
 
         h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            font-size: 1.8rem;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.4;
-            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.15);
         }
 
         p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 1.6;
-            color: #ff6584;
-            margin-bottom: 35px;
-            font-style: italic;
-            letter-spacing: 0.3px;
+            color: #ff4d6d;
+            margin-bottom: 30px;
         }
 
-        /* Buttons Styling with Depth */
+        /* Buttons Styling */
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 15px;
             position: relative;
             height: 140px;
         }
 
         .option-btn {
-            background: rgba(255, 255, 255, 0.03);
-            color: #f3f4f6;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 14px 24px;
-            font-size: 1.05rem;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
             font-family: 'Georgia', serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.5px;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            font-weight: bold;
             display: block;
             width: 100%;
             box-sizing: border-box;
-            backdrop-filter: blur(5px);
         }
 
         #maybeBtn {
@@ -132,11 +98,10 @@
         }
 
         .option-btn:hover {
-            background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 100%);
+            background: #ff4d6d;
             color: white;
-            border-color: transparent;
-            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.45);
-            transform: translateY(-2px);
+            border-color: #ff4d6d;
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.5);
         }
 
         /* 3D ANIMATED CAKE SCENE */
@@ -259,6 +224,7 @@
             justify-content: center;
         }
 
+        /* Hide Scrollbar for Pure Cinematic View */
         .full-screen-letter::-webkit-scrollbar {
             width: 0px;
             background: transparent;
@@ -281,8 +247,9 @@
 
         /* Secret Message section styling: "I LOVE YOU" */
         .secret-message-section {
-            font-weight: 700;
+            font-weight: 700; /* Bolded section */
             color: #ffffff;
+            /* Subtly animated gradient effect on bold text (party-party look) */
             background: linear-gradient(90deg, #ffffff 0%, #ff4d6d 50%, #ffffff 100%);
             background-size: 200% auto;
             animation: shiningText 5s linear infinite;
@@ -373,7 +340,7 @@
             margin-top: 15px;
         }
 
-        /* Floating Elements (Layered behind box due to container z-index) */
+        /* Floating Elements */
         .floating-element {
             position: absolute;
             bottom: -50px;
@@ -403,16 +370,11 @@
             font-weight: bold;
             font-size: 1.1rem;
             white-space: nowrap;
-            color: rgba(255, 255, 255, 0.25);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
 
-        /* Animation Keyframes */
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.2); opacity: 0.9; }
-        }
-
+        /* Animations Keyframes */
         @keyframes shiningText {
             0% { background-position: 200% auto; }
             100% { background-position: -200% auto; }
@@ -438,8 +400,8 @@
 
         @keyframes floatUp {
             0% { transform: translateY(0) scale(0.6); opacity: 0; }
-            15% { opacity: 0.5; }
-            90% { opacity: 0.5; }
+            15% { opacity: 0.6; }
+            90% { opacity: 0.6; }
             100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
         }
 
@@ -455,7 +417,6 @@
 </head>
 <body>
 
-    <!-- PAGE 1: THE NEW PREMIUM INTERFACE -->
     <div id="page1" class="container">
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
@@ -465,14 +426,12 @@
         </div>
     </div>
 
-    <!-- CUSTOM WHITE POPUP -->
     <div id="customPopup" class="custom-popup">
         <h3>Souchhhh leinnnnnn 🥺❤️</h3>
         <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
         <button onclick="closePopup()">Okay Sorry</button>
     </div>
 
-    <!-- INTERMISSION: 3D CAKE CUTTING SCENE -->
     <div id="cakeScene" class="hidden">
         <h2 style="color: #ff4d6d; margin-bottom: 30px; font-size: 2rem; text-shadow: 0 0 10px rgba(255,77,109,0.3);">Make a Wish... ✨</h2>
         <div class="cake-wrapper">
@@ -485,7 +444,6 @@
         </div>
     </div>
 
-    <!-- PAGE 2: IMMERSIVE FULL-SCREEN CINEMATIC LETTER -->
     <div id="page2" class="full-screen-letter hidden">
         <div class="letter-content" id="letterContent">
             
@@ -507,17 +465,13 @@
             
             <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
             
-            <!-- *HIGHLIGHTED SECTION STARTS HERE* (Party Party Glow, Secret 'I LOVE YOU') -->
             <div class="secret-message-section msg-p">
                 Itna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 Log kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 Voh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ Ek ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
             </div>
-            <!-- *HIGHLIGHTED SECTION ENDS HERE* -->
-            
             <div class="msg-p">Yeh ehsas mery leaaaa bht bht khass hai or mein kbhi b isy khona nhi chataaaaa Or kuch mily ya na mily bssss apka sath mujy hamesha hamesha ky lea chaheee mujy nhi ptaaa bss chahe to chaheeeeee 😭 Umeed hai ap meri zindagi mein is eshas ki emiyat ko smjh sakeingi.</div>
             
             <div class="msg-p">Mn to apko apni sariiiiiii A to Z dastan sunai v hai ky like kesy mn face keaa kesy sab hota gea or ab Allhamdullah sab kesy chal rha hai 😭 Like meinn wo insan jo kabhi in chkro mein para e naiiiii kabhi kisi sy bt tk nai ki ahaaa apko dykh ky ma sab kuch bhool gea 🌚 first look mein e like mein tha ky itny pyaryyyyy😭 nain naqsh itni pyary pyary face expression itniii pali pali dressing itni pyarii hasiii itni pyari bateinnnnn itnaaaa pyara kon ho skta 😭</div>
 
-            <!-- THE PREMIUM LIST -->
             <ul class="feature-list">
                 <li>Apki communication</li>
                 <li>Apka playful attitude</li>
@@ -542,14 +496,13 @@
             
             <div class="msg-p" style="font-weight: bold; color: #ff4d6d; font-size: 1.45rem;">Sari ki sariii apppp tablyy tareeef hein😭❤️</div>
             
-            <!-- URDU AND RECENTLY ADDED PARAGRAPHS -->
             <div class="msg-p" style="text-align: center; font-size: 1.5rem; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);">
                 میری کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
                 میں جس کی گردش میں ہوں، وہ اک چاند ہو تم(آپ)🌚🕊️💝
             </div>
             
             <div class="msg-p">
-                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon github par jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
+                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
             </div>
             
             <div class="msg-p">
@@ -566,7 +519,6 @@
                 Galti kutai mafff kriyga😭❤️<br>
                 Happy birthday gee 🎂🎉🎊
             </div>
-
             <div class="msg-p" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 25px; font-style: italic; color: #ff4d6d;">Ab mein b thori english bol lon 😎😭</div>
             
             <div class="msg-p">You areeee trulyyyy special to mee and when i say speical i mean it in the depest most heartfelt way ❤️ with you i find my best best bestttestt comfort i’ve never know 😭</div>
@@ -584,7 +536,6 @@
                 Because you’ll probably never know how much you mean to me.”
             </div>
             
-            <!-- FINAL WISH -->
             <div class="final-wish">Happy Birthday, MINUU GEEE! ❤️</div>
         </div>
     </div>
