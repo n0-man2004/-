@@ -54,12 +54,12 @@
             background: rgba(15, 15, 25, 0.45);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            padding: 50px 40px;
+            padding: 50px 30px;
             border-radius: 32px;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            max-width: 88%;
-            width: 420px;
+            max-width: 90%;
+            width: 400px;
             z-index: 10;
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
             box-sizing: border-box;
@@ -80,7 +80,7 @@
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 400;
             letter-spacing: 0.5px;
             color: #ffffff;
@@ -90,7 +90,7 @@
         }
 
         p {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.6;
             color: #ff6584;
             margin-bottom: 35px;
@@ -104,7 +104,9 @@
             flex-direction: column;
             gap: 16px;
             position: relative;
-            height: 140px;
+            height: 150px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .option-btn {
@@ -122,6 +124,7 @@
             width: 100%;
             box-sizing: border-box;
             backdrop-filter: blur(5px);
+            -webkit-tap-highlight-color: transparent; /* Fixes iPhone gray flash on click */
         }
 
         #maybeBtn {
@@ -130,7 +133,8 @@
             bottom: 0;
             left: 0;
             z-index: 20;
-            transition: all 0.15s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sharp but smooth movement inside box */
+            /* Aaram aaram se smooth glide movement for iOS stability */
+            transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1), bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
         }
 
         .option-btn:hover {
@@ -459,7 +463,6 @@
 </head>
 <body>
 
-    <!-- PAGE 1: THE INTERFACE -->
     <div id="page1" class="container">
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
@@ -469,14 +472,12 @@
         </div>
     </div>
 
-    <!-- CUSTOM WHITE POPUP -->
     <div id="customPopup" class="custom-popup">
         <h3>Souchhhh leinnnnnn 🥺❤️</h3>
         <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
         <button onclick="closePopup()">Okay Sorry</button>
     </div>
 
-    <!-- INTERMISSION: 3D CAKE CUTTING SCENE -->
     <div id="cakeScene" class="hidden">
         <h2 style="color: #ff4d6d; margin-bottom: 30px; font-size: 2rem; text-shadow: 0 0 10px rgba(255,77,109,0.3);">Make a Wish... ✨</h2>
         <div class="cake-wrapper">
@@ -489,7 +490,6 @@
         </div>
     </div>
 
-    <!-- PAGE 2: IMMERSIVE FULL-SCREEN CINEMATIC LETTER -->
     <div id="page2" class="full-screen-letter hidden">
         <div class="letter-content" id="letterContent">
             
@@ -511,7 +511,6 @@
             
             <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
             
-            <!-- SECRET MESSAGE PARAGRAPH WITH ONLY FIRST LETTERS BOLDED (I LOVE YOU) -->
             <div class="msg-p">
                 <span class="secret-letter">I</span>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 Log kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <span class="secret-letter">V</span>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <span class="secret-letter">E</span>k ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
             </div>
@@ -520,7 +519,6 @@
             
             <div class="msg-p">Mn to apko apni sariiiiiii A to Z dastan sunai v hai ky like kesy mn face keaa kesy sab hota gea or ab Allhamdullah sab kesy chal rha hai 😭 Like meinn wo insan jo kabhi in chkro mein para e naiiiii kabhi kisi sy bt tk nai ki ahaaa apko dykh ky ma sab kuch bhool gea 🌚 first look mein e like mein tha ky itny pyaryyyyy😭 nain naqsh itni pyary pyary face expression itniii pali pali dressing itni pyarii hasiii itni pyari bateinnnnn itnaaaa pyara kon ho skta 😭</div>
 
-            <!-- THE PREMIUM LIST -->
             <ul class="feature-list">
                 <li>Apki communication</li>
                 <li>Apka playful attitude</li>
@@ -545,14 +543,13 @@
             
             <div class="msg-p" style="font-weight: bold; color: #ff4d6d; font-size: 1.25rem;">Sari ki sariii apppp tablyy tareeef hein😭❤️</div>
             
-            <!-- URDU AND PARAGRAPHS -->
             <div class="msg-p" style="text-align: center; font-size: 1.35rem; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);">
                 میری کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
                 میں جس کی گردش میں ہوں، وہ اک چاند ہو tum(آپ)🌚🕊️💝
             </div>
             
             <div class="msg-p">
-                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
+                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon黄金 jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
             </div>
             
             <div class="msg-p">
@@ -587,7 +584,6 @@
                 Because you’ll probably never know how much you mean to me.”
             </div>
             
-            <!-- FINAL WISH -->
             <div class="final-wish">Happy Birthday, MINUU GEEE! ❤️</div>
         </div>
     </div>
@@ -650,31 +646,25 @@
             const maybeBtn = document.getElementById('maybeBtn');
             
             if (maybeClickCount <= 5) {
-                // Button ko tight box boundaries ke andar random jumps karwane ke liye styling adjustments
-                maybeBtn.style.width = 'auto';
-                maybeBtn.style.right = 'auto';
+                // Width auto se hata kar text ke mutabiq box width ke andr adjust rakhi taake overflow na ho
+                maybeBtn.style.width = '90%';
+                maybeBtn.style.left = '5%'; /* Center horizontally within safe container */
                 
-                let targetLeft, targetBottom;
+                let targetBottom;
 
-                // Absolute positions tightly confined INSIDE the glass container (.btn-container boundary)
+                // Tightly restricted and perfectly spaced vertical gliding levels within parent box
                 if (maybeClickCount === 1) {
-                    targetLeft = '10px';
-                    targetBottom = '85px'; // Box ke andar upar left side par
+                    targetBottom = '100px'; /* Box ke andar thoda upar aaram se */
                 } else if (maybeClickCount === 2) {
-                    targetLeft = '130px';
-                    targetBottom = '45px'; // Box ke andar beech mein right side par
+                    targetBottom = '45px';  /* Box ke beech mein soft glide */
                 } else if (maybeClickCount === 3) {
-                    targetLeft = '50px';
-                    targetBottom = '90px'; // Box ke andar top center par
+                    targetBottom = '115px'; /* Mazeed thoda upar safe padding ke sath */
                 } else if (maybeClickCount === 4) {
-                    targetLeft = '10px';
-                    targetBottom = '10px'; // Box ke andar bottom left corner par
+                    targetBottom = '15px';  /* Bilkul base line ke paas glide */
                 } else if (maybeClickCount === 5) {
-                    targetLeft = '110px';
-                    targetBottom = '85px'; // Box ke andar top right side par
+                    targetBottom = '75px';  /* Middle balanced location */
                 }
 
-                maybeBtn.style.left = targetLeft;
                 maybeBtn.style.bottom = targetBottom;
                 maybeBtn.innerText = funPhrases[maybeClickCount - 1];
             } else {
