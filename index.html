@@ -279,13 +279,14 @@
             font-weight: 300;
         }
 
-        /* CRITICAL FIXED RULES: Force Secret Bold Letters to be Pure White with Glow */
+        /* ADJUSTED WHITE STYLE FOR BOLD LETTERS WITH REDUCED SHINE */
         .msg-p b {
             font-weight: 900 !important;
-            font-size: 1.45rem !important;
-            color: #ffffff !important; /* Forces Brilliant White */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 5px rgba(255, 255, 255, 0.8) !important;
+            font-size: 1.55rem !important;
+            color: #ffffff !important; 
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 2px rgba(255, 255, 255, 0.3) !important; /* Softened Glow/Shine */
             display: inline-block !important;
+            margin-right: 2px;
         }
 
         .feature-list {
@@ -447,6 +448,7 @@
 </head>
 <body>
 
+    <!-- PAGE 1: THE INTERFACE -->
     <div id="page1" class="container">
         <h2>Before you continue…</h2>
         <p>Do you know how special you are to me?</p>
@@ -456,12 +458,14 @@
         </div>
     </div>
 
+    <!-- CUSTOM WHITE POPUP -->
     <div id="customPopup" class="custom-popup">
         <h3>Souchhhh leinnnnnn 🥺❤️</h3>
         <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
         <button onclick="closePopup()">Okay Sorry</button>
     </div>
 
+    <!-- INTERMISSION: 3D CAKE CUTTING SCENE -->
     <div id="cakeScene" class="hidden">
         <h2 style="color: #ff4d6d; margin-bottom: 30px; font-size: 2rem; text-shadow: 0 0 10px rgba(255,77,109,0.3);">Make a Wish... ✨</h2>
         <div class="cake-wrapper">
@@ -474,6 +478,7 @@
         </div>
     </div>
 
+    <!-- PAGE 2: IMMERSIVE FULL-SCREEN CINEMATIC LETTER -->
     <div id="page2" class="full-screen-letter hidden">
         <div class="letter-content" id="letterContent">
             
@@ -495,16 +500,19 @@
             
             <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
             
+            <!-- PARAGRAPH WITH PURE WHITE BOLDED LETTERS (I L O V E) - "O" IS NOW ADDED AFTER DOUBLE EMOJI -->
             <div class="msg-p">
-                <b>I</b>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 <b>L</b>og kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <b>V</b>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <b>E</b>k ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
+                <b>I</b>tna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 <b>L</b>og kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕<b>O</b>r kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 <b>V</b>oh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ <b>E</b>k ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️
             </div>
             
+            <!-- PARAGRAPH WITH PURE WHITE BOLDED LETTERS (Y O U) -->
             <div class="msg-p">
                 <b>Y</b>eh ehsas mery leaaaa bht bht khass hai or mein kbhi b isy khona nhi chataaaaa <b>O</b>r kuch mily ya na mily bssss apka sath mujy hamesha hamesha ky lea chaheee mujy nhi ptaaa bss chahe to chaheeeeee 😭 <b>U</b>meed hai ap meri zindagi mein is eshas ki emiyat ko smjh sakeingi.
             </div>
             
             <div class="msg-p">Mn to apko apni sariiiiiii A to Z dastan sunai v hai ky like kesy mn face keaa kesy sab hota gea or ab Allhamdullah sab kesy chal rha hai 😭 Like meinn wo insan jo kabhi in chkro mein para e naiiiii kabhi kisi sy bt tk nai ki ahaaa apko dykh ky ma sab kuch bhool gea 🌚 first look mein e like mein tha ky itny pyaryyyyy😭 nain naqsh itni pyary pyary face expression itniii pali pali dressing itni pyarii hasiii itni pyari bateinnnnn itnaaaa pyara kon ho skta 😭</div>
 
+            <!-- THE PREMIUM LIST -->
             <ul class="feature-list">
                 <li>Apki communication</li>
                 <li>Apka playful attitude</li>
@@ -529,9 +537,10 @@
             
             <div class="msg-p" style="font-weight: bold; color: #ff4d6d; font-size: 1.25rem;">Sari ki sariii apppp tablyy tareeef hein😭❤️</div>
             
+            <!-- URDU AND PARAGRAPHS -->
             <div class="msg-p" style="text-align: center; font-size: 1.35rem; color: #ffffff; text-shadow: 0 0 10px rgba(255, 77, 109, 0.3);">
-                میری کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
-                میں جس کی گردش میں ہوں، وہ اک چاند ہو tum(آپ)🌚🕊️💝
+                میرا کائنات میں کئی ستارے ہیں زیر گردش✨❤️🎀<br>
+                میں جس کی گردش میں ہوں، وہ اک چاند ho tum(آپ)🌚🕊️💝
             </div>
             
             <div class="msg-p">
@@ -550,6 +559,7 @@
             
             <div class="msg-p" style="font-weight: bold; font-size: 1.35rem; color: #ff4d6d; text-align: center; line-height: 1.6; margin-top: 40px;">In a world full of people you are my one person 🌍😭 jis mein mn ami sari duniya dykhi sari duniya imagine kiii in sha Allah pura b hoga</div>
 
+            <!-- THE "IN LAST" PARAGRAPHS POSITIONED AT THE VERY END -->
             <div class="msg-p">
                 In last mein dil sy kahonga bht bht himmat krky kahonga😭🌚 wsy to apko b ptaa mein krtaaa bht krta itna krta koi souch nai skta ap ik dfa kahoooo 😭 noman ya kro mein wjh b pouchon agr ky kyu mein kyu kron to ap mjy jhoota keh dyna kehna apny jo kuch kiya dikhawa tha..
                 To kehna ya tha kyyyyyy ap kehtin hein na wallah bht bht bari cheese hai mein b yahi kehta hon 😭
@@ -570,6 +580,7 @@
                 Because you’ll probably never know how much you mean to me.”
             </div>
             
+            <!-- FINAL WISH -->
             <div class="final-wish">Happy Birthday, MINUU GEEE! ❤️</div>
         </div>
     </div>
