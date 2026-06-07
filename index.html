@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0d0d11; /* Rich Deep Velvet Black */
+            background: #09090b; /* Rich Deep Velvet Black */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -80,4 +80,409 @@
             color: #ffffff;
             border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 12px 20px;
-            font-size:
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #maybeBtn {
+            position: relative;
+            z-index: 20;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .option-btn:hover {
+            background: #ff4d6d;
+            color: white;
+            border-color: #ff4d6d;
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.5);
+        }
+
+        /* PAGE 2: PREMIUM FULL-SCREEN LETTER THEME */
+        .full-screen-letter {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(9, 9, 11, 0.95), rgba(20, 10, 15, 0.98));
+            z-index: 50;
+            overflow-y: auto;
+            padding: 60px 24px;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Hide Scrollbar for Pure Cinematic View */
+        .full-screen-letter::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        .letter-content {
+            max-width: 650px; /* Wider space for full visibility */
+            width: 100%;
+            text-align: left;
+            padding-bottom: 35vh; /* Massive space at bottom so last lines scroll to center */
+        }
+
+        .msg-p {
+            font-size: 1.35rem; /* Bigger, premium, high visibility font */
+            line-height: 2;
+            color: #f3f4f6; /* Soft elegant white */
+            margin-bottom: 35px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-weight: 400;
+        }
+
+        /* Elegant Feature List Layout - High Visibility */
+        .feature-list {
+            margin: 40px 0;
+            padding-left: 20px;
+            list-style: none;
+            border-left: 3px solid #ff4d6d;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(255, 77, 109, 0.2);
+        }
+
+        .feature-list li::before {
+            content: "💖 ";
+            margin-right: 8px;
+        }
+
+        .truth-text {
+            font-style: italic;
+            color: #ff758f;
+            font-size: 1.25rem;
+            margin-top: 50px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+            padding-top: 30px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .final-wish {
+            font-size: 2.4rem; /* Grand & Loving final impact */
+            font-weight: bold;
+            color: #ff4d6d;
+            margin-top: 40px;
+            text-align: center;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
+        }
+
+        /* Custom White Popup */
+        .custom-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            z-index: 100;
+            width: 280px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .custom-popup.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-popup h3 {
+            margin: 0 0 15px 0;
+            color: #ff4d6d;
+            font-size: 1.4rem;
+        }
+
+        .custom-popup button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            bottom: -50px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            display: inline-block;
+            height: 20px;
+            transform: rotate(-45deg);
+            width: 20px;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            border-radius: 50%;
+            height: 20px;
+            position: absolute;
+            width: 20px;
+        }
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        .floating-text {
+            font-weight: bold;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.6); opacity: 0; }
+            15% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: THE QUESTION -->
+    <div id="page1" class="container">
+        <h2>Before you continue…</h2>
+        <p>Do you know how special you are to me?</p>
+        <div class="btn-container">
+            <button class="option-btn" onclick="openPopup()">🔘 No</button>
+            <button class="option-btn" id="maybeBtn" onclick="handleMaybe()">🔘 Maybe</button>
+        </div>
+    </div>
+
+    <!-- CUSTOM WHITE POPUP -->
+    <div id="customPopup" class="custom-popup">
+        <h3>Souchhhh leinnnnnn 🥺❤️</h3>
+        <p style="color: #666; font-size: 1rem; margin-bottom: 10px;">Itni jaldi no nahi kehte...</p>
+        <button onclick="closePopup()">Okay Sorry</button>
+    </div>
+
+    <!-- PAGE 2: IMMERSIVE FULL-SCREEN CINEMATIC LETTER -->
+    <div id="page2" class="full-screen-letter hidden">
+        <div class="letter-content" id="letterContent">
+            
+            <div class="msg-p">Happiest happy birthday to one and only fav person 💕 🎂 us shaqs ko jo mery dil mein aik khasss moqam rakhta haii jo na to kabhi khud bdal sakta hai or na he koi or ly skta hai..</div>
+            
+            <div class="msg-p">Apky sath guzra howa 1 1 sec mery lea bht bht kimati hai or or apki har bat har yad har cheez mery lea esaa hazana hai jisy mein kabhi khona nai chata 😭❤️</div>
+            
+            <div class="msg-p">Aj ky is khass din par meri ya dua hai dua toh meri roz e hoti boss gee but aj special ky Allah Pak apko itni khushiya ata krein itni khushiya ky apsy smeyti na jaein ameen sum ameen. Allah pak apki muskurhat hamesha qaym rakhein Ameen sum ameen apky dil ko hamesha sakoon naseeb ho apka har har khuburat khawab mukamal ho 😭 ameen sum ameen</div>
+            
+            <div class="msg-p">Mein chahe jitna marzi likh lon jitna marzi wo kabhi b is bt ko mukamal tor par bayan nai kr skty ky mery dil mein apka kea mukam apki kea izat kitni qaadarrr or or or kitna undefined love❤️mein hamesha Allah ka shukr guzr rahonga ky apko mery sth milaya</div>
+            
+            <div class="msg-p">Meri dua hai ke Allah ap ki zindagi ko khushiyon kamyabiyon aur rehmaton se bhar dein ap ke har gham ko khushi mein badal dein har dua qabool ho aur har khawab haqeeqat ban jaye. Ameen Ameen sum Ameen 💕</div>
+            
+            <div class="msg-p">Aap un chand logon mein se hain jin ki mojoodgi nah sahi lkinnnn unka khayalllllll hi din ko behtar bana deta hai.😭</div>
+            
+            <div class="msg-p">Allah aap ko hamesha apni hifazat mein rakhe aur aap ki zindagi ko har aane wale saal ke saath aur bhi khoobsurat bana de. Ameen sum Ameen</div>
+            
+            <div class="msg-p">Happy birthday to youuuu gee shonyo😭❤️ Meri dua hai ky Any wala sall apky itna he khubsurat ho itna he nayab ho itna e yad-gar ho Jitni ap khud hein💕😭</div>
+            
+            <div class="msg-p">Allah ny yaha tk ky rasty bana dea to apko kea lagta unky lea agy ky rasty banana mushkil hai never ever😭 kabhi b nai. In sha Allah in sha Allah ap dykhiyga esy rasty banygy esy baneingy koi yaqen nai kryga. In sha Allah mjy mery rab py bht barosa hai.</div>
+            
+            <div class="msg-p">Itna sakoon mjy wallah kabhi kisi orsy bt krky nai milta jitna mein apsy bt krky relax or easy feel krta hon😭 Log kehty hein duniya bohot bari hai lkin meri duniya ap par shuru hoti hai aur ap par hi khatam hoti 😭💕Or kuch magny ki khawish e nhi hoti jb ap mery sth bt krti hein🌚 Voh apka meri har choti sy choti bt ko sunaaa uskooo note krnaa or phr mujy smjhnaaa means alot to me ☺️ Ek ap he ho jis sy mein koi b bt kron koi b to mujy souchna nhi parta or ap mujy without judge kea sun lytin hein 😭❤️</div>
+            
+            <div class="msg-p">Yeh ehsas mery leaaaa bht bht khass hai or mein kbhi b isy khona nhi chataaaaa Or kuch mily ya na mily bssss apka sath mujy hamesha hamesha ky lea chaheee mujy nhi ptaaa bss chahe to chaheeeeee 😭 Umeed hai ap meri zindagi mein is eshas ki emiyat ko smjh sakeingi.</div>
+            
+            <div class="msg-p">Mn to apko apni sariiiiiii A to Z dastan sunai v hai ky like kesy mn face keaa kesy sab hota gea or ab Allhamdullah sab kesy chal rha hai 😭 Like meinn wo insan jo kabhi in chkro mein para e naiiiii kabhi kisi sy bt tk nai ki ahaaa apko dykh ky ma sab kuch bhool gea 🌚 first look mein e like mein tha ky itny pyaryyyyy😭 nain naqsh itni pyary pyary face expression itniii pali pali dressing itni pyarii hasiii itni pyari bateinnnnn itnaaaa pyara kon ho skta 😭</div>
+
+            <!-- THE PREMIUM LIST -->
+            <ul class="feature-list">
+                <li>Apki communication</li>
+                <li>Apka playful attitude</li>
+                <li>Apki adorable smile</li>
+                <li>Apky delicated hands</li>
+                <li>Apki pyari ankhein</li>
+                <li>Ap without makeup</li>
+                <li>Apka mannerisms</li>
+                <li>Apki personality</li>
+                <li>Apki eyelashes</li>
+                <li>Apka structure</li>
+                <li>Apky long hair</li>
+                <li>Apky glances</li>
+                <li>Apka humor</li>
+                <li>Apki height</li>
+                <li>Apki laugh</li>
+                <li>Apki voice</li>
+                <li>Apky teeths</li>
+                <li>Apka style</li>
+                <li>Apky lips</li>
+            </ul>
+            
+            <div class="msg-p" style="font-weight: bold; color: #ff4d6d; font-size: 1.45rem;">Sari ki sariii apppp tablyy tareeef hein😭❤️</div>
+            
+            <div class="msg-p">Ma sha Allah ma sha Allah millions billionss trillions time apki mein ab kis kis cheez ko bayan kronnnnn. Apsyyyyyy ya sab krna mery ehtiyar mein nai tha lkin ab to hogai hai😭 or ab mein khud ko mumkin ya namumkin ky waswaso mein nai dalta kyu ky duaaaaaa sy kea kuch mumkin nai hotaaaa agr shuruwat mery hath mein nai thi to kea howa ab iski ending to mery hath mein e hai na😭😭 kyu ky duaaaa to har chez ko badal skti hai and i know iska natija b wohe nikaly ga jo mn souchaaaa hai in sha Allah or or ap to meri dua ka wo hisa heinn jo mein zuban sy ada nai hota jis ka hall ankhein Allah ko sunatin hein or wo janta hai ky usky darr py sawali hali hath kabhi wapis jany ky lea nai ata😭😭</div>
+            
+            <div class="msg-p" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 25px; font-style: italic; color: #ff4d6d;">Ab mein b thori english bol lon 😎😭</div>
+            
+            <div class="msg-p">You areeee trulyyyy special to mee and when i say speical i mean it in the depest most heartfelt way ❤️ with you i find my best best bestttestt comfort i’ve never know 😭</div>
+            
+            <div class="msg-p">Talking to you feels easy<br>Sharing my thoughts feels safe<br>You listen to me without judgment without limits<br>Around you i dont fear beign misunderstood i can simply b myself 🤍🕊️</div>
+            
+            <div class="msg-p">mein shuru sy e janta tha ky ap bakio sy bilkul bilkul alag hongi and you are😭💓 ma sha Allah Allhamdullah</div>
+            
+            <div class="msg-p">You care in ways word can not capture you have a heart soooo soo rare unqiue beautiful soft soo kind it still amaze me ap meri choti sy choti bt fazol sy fazol bat b sunti hein and esy react kritn hein jesy mn bht bht zarori bt krdi hoo😭 apka mujy feel krna or phr pouchna ky sab thk hai koi masla pareshani means alot to me😭❤️ you coreected me when i was wrong stood by me jab b mery bary mein bt hoi class mein jesy ky apny kaha tha ky mein support krti thi and and like in game when api laiba mjy wo donkey wala sticker snd krtin ap foran sy jucie byj dytin aha😭❤️</div>
+            
+            <div class="msg-p" style="font-weight: bold; font-size: 1.5rem; color: #ff4d6d; text-align: center; line-height: 1.6; margin-top: 40px;">In a world full of people you are my one person 🌍😭 jis mein mn ami sari duniya dykhi sari duniya imagine kiii in sha Allah pura b hoga</div>
+
+            <div class="truth-text">
+                “The truth is, no button could give the right answer.<br><br>
+                Because you’ll probably never know how much you mean to me.”
+            </div>
+            
+            <div class="final-wish">Happy Birthday Meri Jaan ❤️</div>
+        </div>
+    </div>
+
+    <script>
+        // High Quantity Floating System
+        function createFloatingElement() {
+            const container = document.createElement('div');
+            container.classList.add('floating-element');
+            
+            const isText = Math.random() > 0.4;
+            
+            if (isText) {
+                container.classList.add('floating-text');
+                container.innerText = "hhhhh😭❤️";
+            } else {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                const colors = ['#ff4d6d', '#ffffff', '#ff758f', '#ffffff'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                heart.style.backgroundColor = randomColor;
+                container.style.setProperty('--heart-color', randomColor);
+                container.appendChild(heart);
+                
+                const styleHelper = document.createElement('style');
+                styleHelper.innerHTML = `.floating-element .heart { background-color: var(--heart-color); } .floating-element .heart:before, .floating-element .heart:after { background-color: var(--heart-color); }`;
+                if (!document.getElementById('heart-style-helper')) {
+                    styleHelper.id = 'heart-style-helper';
+                    document.head.appendChild(styleHelper);
+                }
+            }
+            
+            container.style.left = Math.random() * 100 + 'vw';
+            container.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            document.body.appendChild(container);
+            setTimeout(() => { container.remove(); }, 7000);
+        }
+        setInterval(createFloatingElement, 250);
+
+        function openPopup() {
+            document.getElementById('customPopup').classList.add('active');
+        }
+        function closePopup() {
+            document.getElementById('customPopup').classList.remove('active');
+        }
+
+        // Custom Requested Dialogues
+        const funPhrases = [
+            "🔘 Pakr ky dikhaein 😅",
+            "🔘 Aryyy pakrein naw😭",
+            "🔘 O geee thak ty nai gay 🌚",
+            "🔘 Ohoo chlein akhri bari😁",
+            "🔘 Basss akhriii dfa😭❤️"
+        ];
+
+        let maybeClickCount = 0;
+        function handleMaybe() {
+            maybeClickCount++;
+            const maybeBtn = document.getElementById('maybeBtn');
+            
+            if (maybeClickCount <= 5) {
+                maybeBtn.style.position = 'fixed';
+                
+                const containerLeft = window.innerWidth / 2 - 150;
+                const containerTop = window.innerHeight / 2 - 100;
+                
+                const safeMinX = containerLeft - 20;
+                const safeMaxX = containerLeft + 140;
+                const safeMinY = containerTop + 90;
+                const safeMaxY = containerTop + 210;
+                
+                const randomX = Math.random() * (safeMaxX - safeMinX) + safeMinX;
+                const randomY = Math.random() * (safeMaxY - safeMinY) + safeMinY;
+                
+                maybeBtn.style.left = randomX + 'px';
+                maybeBtn.style.top = randomY + 'px';
+                maybeBtn.style.width = '240px'; 
+                
+                maybeBtn.innerText = funPhrases[maybeClickCount - 1];
+            } else {
+                nextPage();
+            }
+        }
+
+        function nextPage() {
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+            
+            p1.style.opacity = '0';
+            setTimeout(() => {
+                p1.classList.add('hidden');
+                p2.classList.remove('hidden');
+                startAutoScroll();
+            }, 400);
+        }
+
+        // Full Screen Slow Smooth Auto Scroll System
+        function startAutoScroll() {
+            const letterView = document.getElementById("page2");
+            let scrollSpeed = 0.65; // Perfect reading speed for full screen
+            
+            function doScroll() {
+                letterView.scrollTop = letterView.scrollTop + scrollSpeed;
+                
+                if (letterView.scrollTop + letterView.clientHeight < letterView.scrollHeight) {
+                    requestAnimationFrame(doScroll);
+                }
+            }
+            setTimeout(() => {
+                requestAnimationFrame(doScroll);
+            }, 1200); // Elegant delay before starting
+        }
+    </script>
+</body>
+</html>
