@@ -542,7 +542,7 @@
             </div>
             
             <div class="msg-p">
-                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
+                Or meinnnn bht bht zyada luckyy bht bht zyadaaaa blessed feel krta hon widget jab mein souchta hon ky mery pass aik esa shaqs b moqod hai jis sy mein apna har dukh har sukh bata skta hon or aj ky door mein esa insan dhond mushkil nai bht e zyada mushkil haii. Or or apki wjh sy to mery andrr itny sary changes ayee sary ky sary positive 😭 mein to bht bht zyada change b hogea aha just because of you.
             </div>
             
             <div class="msg-p" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 25px; font-style: italic; color: #ff4d6d;">Ab mein b thori english bol lon 😎😭</div>
@@ -557,7 +557,7 @@
             
             <div class="msg-p" style="font-weight: bold; font-size: 1.35rem; color: #ff4d6d; text-align: center; line-height: 1.6; margin-top: 40px;">In a world full of people you are my one person 🌍😭 jis mein mn ami sari duniya dykhi sari duniya imagine kiii in sha Allah pura b hoga</div>
 
-            <!-- MOVED FROM ABOVE: THE "IN LAST" PARAGRAPHS FROM image_15.png POSITIONED AT THE VERY END -->
+            <!-- THE "IN LAST" PARAGRAPHS POSITIONED AT THE VERY END -->
             <div class="msg-p">
                 In last mein dil sy kahonga bht bht himmat krky kahonga😭🌚 wsy to apko b ptaa mein krtaaa bht krta itna krta koi souch nai skta ap ik dfa kahoooo 😭 noman ya kro mein wjh b pouchon agr ky kyu mein kyu kron to ap mjy jhoota keh dyna kehna apny jo kuch kiya dikhawa tha..
                 To kehna ya tha kyyyyyy ap kehtin hein na wallah bht bht bari cheese hai mein b yahi kehta hon 😭
@@ -627,12 +627,18 @@
             document.getElementById('customPopup').classList.remove('active');
         }
 
+        // Updated New 10-Step Interactive Try Again Sequence
         const funPhrases = [
-            "🔘 Pakr ky dikhaein 😅",
-            "🔘 Aryyy pakrein naw😭",
-            "🔘 O geee thak ty nai gay 🌚",
-            "🔘 Ohoo chlein akhri bari😁",
-            "🔘 Basss akhriii dfa😭❤️"
+            "🔘 Try again",
+            "🔘 Try again please",
+            "🔘 Last time try again",
+            "🔘 Bass akhri dfa try again 😭",
+            "🔘 O gee try again😭",
+            "🔘 Thaak ty nai gayyy 🌚",
+            "🔘 I know ap nai thakein is lea try again😭",
+            "🔘 Bass akhri dfaaa",
+            "🔘 Ya last haiii",
+            "🔘 Paka akhri hai😭❤️"
         ];
 
         let maybeClickCount = 0;
@@ -640,7 +646,7 @@
             maybeClickCount++;
             const maybeBtn = document.getElementById('maybeBtn');
             
-            if (maybeClickCount <= 5) {
+            if (maybeClickCount <= 10) { // Click count extended to 10 for all phrases
                 maybeBtn.style.transform = 'scale(0.92)';
                 
                 setTimeout(() => {
